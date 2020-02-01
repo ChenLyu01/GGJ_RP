@@ -1,10 +1,11 @@
 VERSION 5.00
 Begin VB.Form frm_Main 
+   BorderStyle     =   0  'None
    Caption         =   "GGJ_2020"
-   ClientHeight    =   5790
-   ClientLeft      =   120
-   ClientTop       =   465
-   ClientWidth     =   9495
+   ClientHeight    =   13560
+   ClientLeft      =   0
+   ClientTop       =   0
+   ClientWidth     =   23340
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -15,17 +16,36 @@ Begin VB.Form frm_Main
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5790
-   ScaleWidth      =   9495
+   ScaleHeight     =   904
+   ScaleMode       =   3  'Pixel
+   ScaleWidth      =   1556
    ShowInTaskbar   =   0   'False
-   StartUpPosition =   3  'Windows Default
-   Begin VB.Label Label1 
-      Caption         =   "Label1"
-      Height          =   255
-      Left            =   2160
+   StartUpPosition =   2  'CenterScreen
+   Begin VB.CommandButton Cmd_Close 
+      Caption         =   "Close"
+      Height          =   480
+      Left            =   15600
+      TabIndex        =   1
+      Top             =   120
+      Width           =   810
+   End
+   Begin VB.Timer Tmr_Draw 
+      Interval        =   100
+      Left            =   11160
+      Top             =   480
+   End
+   Begin VB.PictureBox PicMain 
+      BackColor       =   &H00FFFFFF&
+      BorderStyle     =   0  'None
+      Height          =   10455
+      Left            =   -120
+      ScaleHeight     =   697
+      ScaleMode       =   3  'Pixel
+      ScaleWidth      =   1201
       TabIndex        =   0
-      Top             =   1680
-      Width           =   1335
+      TabStop         =   0   'False
+      Top             =   0
+      Width           =   18015
    End
 End
 Attribute VB_Name = "frm_Main"
@@ -33,3 +53,34 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+
+Private Sub Cmd_Close_Click()
+    Unload Me
+End Sub
+
+Private Sub Form_Unload(Cancel As Integer)
+     Dim i As Integer
+    With this_Graphic.Buffer
+        For i = 0 To 15
+            SelectObject this_Graphic.Buffer.TileSetBmp(i), this_Graphic.Buffer.OldTilesetBmpDC(i)
+            DeleteDC .TileSetBmp(i)
+        Next i
+        
+        SelectObject .BackBuffer, .OldBackBufferDC
+        DeleteDC .BackBuffer
+        DeleteObject .BackBufferBmp
+            
+    End With
+
+'    For i = 0 To Cmd_Object.UBound
+'        Unload Cmd_Object(i)
+'    Next i
+    
+    Unload Me
+    End
+End Sub
+
+Private Sub Tmr_Draw_Timer()
+    Call GameDraw(PicMain.hDC, this_Graphic, this_Switch)
+End Sub

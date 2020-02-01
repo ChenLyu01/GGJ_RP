@@ -1,9 +1,13 @@
 Type=Exe
 Form=GGJ_RP.frm
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
 Module=m_Declare; Modules\m_Declare.bas
+Module=m_Main; Modules\m_Main.bas
+Module=m_Games_Graphic; Modules\m_Games_Graphic.bas
+Module=m_Games_Map; Modules\m_Games_Map.bas
+Module=m_Games_Events; Modules\m_Games_Events.bas
 IconForm="frm_Main"
-Startup="frm_Main"
+Startup="Sub Main"
 HelpFile=""
 Title="GGJ_RP"
 Command32=""
