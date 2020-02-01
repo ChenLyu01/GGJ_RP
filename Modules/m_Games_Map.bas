@@ -123,7 +123,7 @@ Public Sub Game_MapDataLoad(this_FilePath As m_FilePath)
         .GraphicFiles(11).BlackPicPixel.Height = 0
         
         .Screen.Width = 1024
-        .Screen.Height = 768
+        .Screen.Height = 712
         
         .Posi.x = 0
         .Posi.y = 0

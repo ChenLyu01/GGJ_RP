@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frm_Main 
    BorderStyle     =   0  'None
    Caption         =   "GGJ_2020"
-   ClientHeight    =   11250
+   ClientHeight    =   12285
    ClientLeft      =   0
    ClientTop       =   0
    ClientWidth     =   15825
@@ -16,7 +16,7 @@ Begin VB.Form frm_Main
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   750
+   ScaleHeight     =   819
    ScaleMode       =   3  'Pixel
    ScaleWidth      =   1055
    ShowInTaskbar   =   0   'False
@@ -37,9 +37,9 @@ Begin VB.Form frm_Main
    Begin VB.PictureBox PicMain 
       BackColor       =   &H00FFFFFF&
       BorderStyle     =   0  'None
-      Height          =   11175
+      Height          =   12015
       Left            =   120
-      ScaleHeight     =   745
+      ScaleHeight     =   801
       ScaleMode       =   3  'Pixel
       ScaleWidth      =   1057
       TabIndex        =   0

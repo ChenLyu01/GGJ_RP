@@ -1,2 +1,6 @@
 frm_Main = 0, 0, 0, 0, C, 26, 26, 835, 452, C
 m_Declare = 0, 0, 0, 0, C
+m_Main = 0, 0, 0, 0, C
+m_Games_Graphic = 0, 0, 0, 0, C
+m_Games_Map = 52, 52, 881, 494, 
+m_Games_Events = 26, 26, 855, 468, 
