@@ -19,6 +19,14 @@ Begin VB.Form frm_Main
    ScaleWidth      =   9495
    ShowInTaskbar   =   0   'False
    StartUpPosition =   3  'Windows Default
+   Begin VB.Label Label1 
+      Caption         =   "Label1"
+      Height          =   255
+      Left            =   2160
+      TabIndex        =   0
+      Top             =   1680
+      Width           =   1335
+   End
 End
 Attribute VB_Name = "frm_Main"
 Attribute VB_GlobalNameSpace = False
