@@ -64,12 +64,12 @@ Public Sub Game_MapDataLoad(this_FilePath As m_FilePath)
         .GraphicFiles(0).BlackPicPixel.y = 0
         .GraphicFiles(0).BlackPicPixel.Width = 245
         
-        .GraphicFiles(1).FilesName = "Object2.gif"
+        .GraphicFiles(1).FilesName = "Object.gif"
         .GraphicFiles(1).BlackPicPixel.x = 1
         .GraphicFiles(1).BlackPicPixel.y = 0
         .GraphicFiles(1).BlackPicPixel.Width = 494
         
-        .GraphicFiles(2).FilesName = "Player1.gif"
+        .GraphicFiles(2).FilesName = "Character.gif"
         .GraphicFiles(2).BlackPicPixel.x = 1
         .GraphicFiles(2).BlackPicPixel.y = 0
         .GraphicFiles(2).BlackPicPixel.Width = 512
@@ -115,6 +115,12 @@ Public Sub Game_MapDataLoad(this_FilePath As m_FilePath)
         .GraphicFiles(10).BlackPicPixel.x = 1
         .GraphicFiles(10).BlackPicPixel.y = 0
         .GraphicFiles(10).BlackPicPixel.Width = 223
+        
+        .GraphicFiles(11).FilesName = "Tiles.gif"
+        .GraphicFiles(11).BlackPicPixel.x = 1
+        .GraphicFiles(11).BlackPicPixel.y = 0
+        .GraphicFiles(11).BlackPicPixel.Width = 0
+        .GraphicFiles(11).BlackPicPixel.Height = 0
         
         .Screen.Width = 1024
         .Screen.Height = 768
@@ -228,17 +234,19 @@ Public Sub Game_MapDataLoad(this_FilePath As m_FilePath)
         .Map.TilesInfo.Width = 672
         .Map.TilesInfo.Height = 588
 
-
-        .Map.Tiles(1).GraphicPosition.x = 26
-        .Map.Tiles(1).GraphicPosition.y = 592
+        .Map.Tiles(1).GraphicID = 11
+        .Map.Tiles(1).GraphicPosition.x = 0
+        .Map.Tiles(1).GraphicPosition.y = 0
         .Map.Tiles(1).GraphicPosition.Width = 84
         .Map.Tiles(1).GraphicPosition.Height = 84
-        .Map.Tiles(2).GraphicPosition.x = 110
-        .Map.Tiles(2).GraphicPosition.y = 592
+        .Map.Tiles(2).GraphicID = 11
+        .Map.Tiles(2).GraphicPosition.x = 84
+        .Map.Tiles(2).GraphicPosition.y = 0
         .Map.Tiles(2).GraphicPosition.Width = 84
         .Map.Tiles(2).GraphicPosition.Height = 84
-        .Map.Tiles(3).GraphicPosition.x = 194
-        .Map.Tiles(3).GraphicPosition.y = 592
+        .Map.Tiles(3).GraphicID = 11
+        .Map.Tiles(3).GraphicPosition.x = 168
+        .Map.Tiles(3).GraphicPosition.y = 0
         .Map.Tiles(3).GraphicPosition.Width = 84
         .Map.Tiles(3).GraphicPosition.Height = 84
 

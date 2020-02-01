@@ -2,10 +2,10 @@ VERSION 5.00
 Begin VB.Form frm_Main 
    BorderStyle     =   0  'None
    Caption         =   "GGJ_2020"
-   ClientHeight    =   13560
+   ClientHeight    =   11250
    ClientLeft      =   0
    ClientTop       =   0
-   ClientWidth     =   23340
+   ClientWidth     =   15825
    BeginProperty Font 
       Name            =   "Tahoma"
       Size            =   8.25
@@ -16,17 +16,17 @@ Begin VB.Form frm_Main
       Strikethrough   =   0   'False
    EndProperty
    LinkTopic       =   "Form1"
-   ScaleHeight     =   904
+   ScaleHeight     =   750
    ScaleMode       =   3  'Pixel
-   ScaleWidth      =   1556
+   ScaleWidth      =   1055
    ShowInTaskbar   =   0   'False
    StartUpPosition =   2  'CenterScreen
    Begin VB.CommandButton Cmd_Close 
       Caption         =   "Close"
       Height          =   480
-      Left            =   15600
+      Left            =   13920
       TabIndex        =   1
-      Top             =   120
+      Top             =   360
       Width           =   810
    End
    Begin VB.Timer Tmr_Draw 
@@ -37,15 +37,15 @@ Begin VB.Form frm_Main
    Begin VB.PictureBox PicMain 
       BackColor       =   &H00FFFFFF&
       BorderStyle     =   0  'None
-      Height          =   10455
-      Left            =   -120
-      ScaleHeight     =   697
+      Height          =   11175
+      Left            =   120
+      ScaleHeight     =   745
       ScaleMode       =   3  'Pixel
-      ScaleWidth      =   1201
+      ScaleWidth      =   1057
       TabIndex        =   0
       TabStop         =   0   'False
       Top             =   0
-      Width           =   18015
+      Width           =   15855
    End
 End
 Attribute VB_Name = "frm_Main"

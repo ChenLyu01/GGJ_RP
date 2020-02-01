@@ -23,7 +23,7 @@ Dim i As Integer
         .Buffer.BackBufferBmp = CreateCompatibleBitmap(this_hdc, .Screen.Width, .Screen.Height)
         .Buffer.OldBackBufferDC = SelectObject(.Buffer.BackBuffer, .Buffer.BackBufferBmp)
         
-        For i = 0 To 10
+        For i = 0 To 11
         
             .Buffer.TileSetBmp(i) = CreateCompatibleDC(this_hdc)
             .Buffer.OldTilesetBmpDC(i) = SelectObject(.Buffer.TileSetBmp(i), LoadPicture(this_FilePath.Graphics & .GraphicFiles(i).FilesName))
@@ -35,13 +35,34 @@ Dim i As Integer
 End Sub
 
 Public Sub GameDraw(this_hdc As Long, this_Graphic As m_Graphic, this_Switch As m_Switch)
+    Call Draw_Background(this_Graphic, this_Switch)
+    Call Draw_Tiles0(this_Graphic, this_Switch)
     Call Draw_Tiles1(this_Graphic, this_Switch)
 
     BitBlt this_hdc, this_Graphic.Posi.x, this_Graphic.Posi.y, this_Graphic.Screen.Width, this_Graphic.Screen.Height, this_Graphic.Buffer.BackBuffer, 0, 0, vbSrcCopy    '½«µØÍ¼»æÖÆÔÚÆÁÄ»ÉÏ
 
 End Sub
+Public Sub Draw_Background(this_Graphic As m_Graphic, m_Switch As m_Switch)    'Draw background picture
+    With this_Graphic
+        BitBlt .Buffer.BackBuffer, 0, 0, .Screen.Width, .Screen.Height, .Buffer.TileSetBmp(0), 0, 0, vbSrcCopy
+    End With
+End Sub
 
+Public Sub Draw_Tiles0(this_Graphic As m_Graphic, m_Switch As m_Switch)   'ÔÚµØÍ¼ÉÏÖØ»æµÚÒ»²ãÍ¼¿é »ù´¡Í¼¿é²ã
+    Dim i, j As Integer
 
+    With this_Graphic
+
+            If .Map.Tiles(.Map.TileID).GraphicPosition.Width = 0 Then .Map.Tiles(.Map.TileID).GraphicPosition.Width = 1
+            If .Map.Tiles(.Map.TileID).GraphicPosition.Height = 0 Then .Map.Tiles(.Map.TileID).GraphicPosition.Height = 1
+            For i = 0 To (.Map.TilesInfo.Width / .Map.Tiles(.Map.TileID).GraphicPosition.Width) - 1
+                For j = 0 To (.Map.TilesInfo.Height / .Map.Tiles(.Map.TileID).GraphicPosition.Height) - 1
+                   BitBlt .Buffer.BackBuffer, .Map.TilesInfo.x + i * .Map.Tiles(.Map.TileID).GraphicPosition.Width, .Map.TilesInfo.y + j * .Map.Tiles(.Map.TileID).GraphicPosition.Height, .Map.Tiles(.Map.TileID).GraphicPosition.Width, .Map.Tiles(.Map.TileID).GraphicPosition.Height, .Buffer.TileSetBmp(.Map.Tiles(.Map.TileID).GraphicID), .Map.Tiles(.Map.TileID).GraphicPosition.x, .Map.Tiles(.Map.TileID).GraphicPosition.y, vbSrcCopy
+                Next j
+            Next i
+    End With
+End Sub
+    
 Public Sub Draw_Tiles1(this_Graphic As m_Graphic, m_Switch As m_Switch)   'ÔÚµØÍ¼ÉÏÖØ»æµÚÒ»²ãÍ¼¿é »ù´¡Í¼¿é²ã
     Dim i, j, II, jj, a As Integer
     Dim f As Byte
@@ -51,14 +72,6 @@ Public Sub Draw_Tiles1(this_Graphic As m_Graphic, m_Switch As m_Switch)   'ÔÚµØÍ
         .Player(0).Pic.x = .Player(0).Pic_Temp(0).x
         .Player(0).Pic.y = .Player(0).Pic_Temp(0).y
                                 
-        BitBlt .Buffer.BackBuffer, 0, 0, .Screen.Width, .Screen.Height, .Buffer.TileSetBmp(0), 0, 0, vbSrcCopy
-            If .Map.Tiles(.Map.TileID).GraphicPosition.Width = 0 Then .Map.Tiles(.Map.TileID).GraphicPosition.Width = 1
-            If .Map.Tiles(.Map.TileID).GraphicPosition.Height = 0 Then .Map.Tiles(.Map.TileID).GraphicPosition.Height = 1
-            For i = 0 To (.Map.TilesInfo.Width / .Map.Tiles(.Map.TileID).GraphicPosition.Width) - 1
-                For j = 0 To (.Map.TilesInfo.Height / .Map.Tiles(.Map.TileID).GraphicPosition.Height) - 1
-                   BitBlt .Buffer.BackBuffer, .Map.TilesInfo.x + i * .Map.Tiles(.Map.TileID).GraphicPosition.Width, .Map.TilesInfo.y + j * .Map.Tiles(.Map.TileID).GraphicPosition.Height, .Map.Tiles(.Map.TileID).GraphicPosition.Width, .Map.Tiles(.Map.TileID).GraphicPosition.Height, .Buffer.TileSetBmp(.Map.Tiles(.Map.TileID).GraphicID), .Map.Tiles(.Map.TileID).GraphicPosition.x, .Map.Tiles(.Map.TileID).GraphicPosition.y, vbSrcCopy
-                Next j
-            Next i
             
             If m_Switch.Pathway = True Then
                 For i = 0 To 15
